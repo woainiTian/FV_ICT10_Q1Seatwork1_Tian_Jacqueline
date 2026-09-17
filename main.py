@@ -24,9 +24,9 @@ days = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sun
 display (f'Hello! Im {name}! I am {age} years old.', target= "content")
 
 display (f'I am {height1}cm tall.', target="content")
-display (f'I am a new student. (That that is {student_type}).', target="content")
+display (f'I am a new student. (That is {student_type}).', target="content")
 display (f'My favorite color as of now is {dct_color["fav_color"]}, the car I have is a {dct_car["car_brand"]}, and my best friend is {dct_bsf["best_friend"]}.', target="content")
-display (f'My favorite fruits are {", ".join(fruits)}', target="content")
+display (f'My favorite fruits are {", ".join(fruits)}.', target="content")
 display (f'The seven days of the week are: {", ".join(days)}.', target="content")
 
 

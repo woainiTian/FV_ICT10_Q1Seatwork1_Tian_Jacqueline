@@ -3,30 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICT SW1 & Drill2</title>
-    
-    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" /> 
-    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <title>Q4 Skills Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
+<style>
+    
+    body{
+        background-image: url("https://i.pinimg.com/1200x/aa/a5/37/aaa537d51c7a2ce858075f2b74a3a822.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .container{
+        width:450px;
+        height:560px;
+        background-color: white;
+        padding:50px;
+        margin: auto;
+        margin-top: 120px;
+        border-radius: 18px;
+        box-shadow:0px 4px 20px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    label{
+        font-size: small;
+    }
+
+    input{
+        font-size:small
+    }
+
+
+</style>
 
 <body>
-    <py-script type="py" src="main.py"></py-script> 
 
-    <h3>All About Jacque</h3>
-    <div id="content">
+    <h1 class="text-center" style="font-weight:bold; margin-top: 70px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Coldwell International Academy</h1>
+
+    <div class="container" style="margin-top:40px;">
+        <p style="font-size: small; font-weight: bold";>Log in to your virtual notebook</p>
+        <h3 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Coldwell Academic Platform</h3>
+        <br>
+
+        <form>
+            <label for="">Username</label>
+            <br>
+            <input type="text" id="uname" class="form-control" placeholder="Enter here" required>
+            <br>
+
+            <label for="">Password</label>
+            <br>
+            <input type="password" id="pwd" class="form-control" placeholder="Enter here" required>
+            <br>
+
+            <br>
+                <input class="form-check-input" type="checkbox" id="disc">
+                <label class="text-muted" for="disc" style="font-size: small">Stay logged in this device.</label>
+
+            <p id="display"></p>
+
+            <input type="button" name="button" id="loginBTN" value="Login" class="btn btn-primary" onclick="authenticate()">
+            <input type="reset" name="button" id="cancel" value="Cancel" class="btn btn btn-light" > <!--a cancel button-->
+            
+            <br>
+            <a href="#" onclick="forgotPassword()" style="font-size: small;">Forgot Password?</a>
+        </form>
     </div>
 
-    <h3>Calculator</h3>
-    <div id="calculator">
-        <input type="text" id="value1">
-        <input type="text" id="value2">
-        <button type="submit" py-click="compute">Solve<button>
-            <div id="results"></div>
+    <script>
+        let attempt_counter = 0;
+       
+        function authenticate(){
 
-    </div>
+            //assigne vallues
+
+                let username = document.getElementById("uname").value; 
+                let pwd = document.getElementById("pwd").value;
+                let granted = "Welcome " + username + "!";
+                let denied = "Access denied. Account locked after 3 attempts!";
+
+
+            //A. the attempt is correct.    
+                while (attempt_counter < 3) {
+                if (username === "9sappharian_'26" && pwd === "coldwellstudent") { 
+                
+                    alert(granted); //diplays the granted mssg.
+                    attempt_counter = 0; // reset attempts after successful login, becomes 0 bc attempt was correct
+
+                    document.getElementById("display").innerHTML = "";
+                    window.location.href = "index.html"; //finds next page.
+
+                    break; // stop loop
+            }
+
+            //B. the attempt is incorrect.
+                else {
+                attempt_counter++; //incorrect attempt, so their attempt counter +1.
+                
+                document.getElementById("display").innerHTML =
+                    "Incorrect username and/or password. Attempt " + attempt_counter + " of 3 ";
+
+                break; // stop loop for this click. the user will try again until attempt counter = 3.
+            }
+
+            }
+
+            if (attempt_counter >= 3) {
+                    alert(denied);
+                    document.getElementById("loginBTN").disabled = true; // disable button
+                }
+            }
+
+
+
+        function forgotPassword(){
+            alert("Visit the OBMC page for help.");
+        }
+
+    </script>
 
 </body>
 </html>
-
-
